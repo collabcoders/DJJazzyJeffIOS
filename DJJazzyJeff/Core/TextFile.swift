@@ -15,7 +15,7 @@ var str = Text()
 
 
 struct Text {
-    var appName  = "DJ Jazzy Jaff".localized()
+//    var appName  = "DJJazzyJeff".localized()
     var VERSION = "VERSION".localized()
     var appLoading = "Loading...".localized()
     

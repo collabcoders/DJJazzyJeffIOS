@@ -57,13 +57,14 @@ extension SingUpViewController :WebServiceHelperDelegate{
             if let message = data["msg"] as? String{
                 
                 
-                let alert = UIAlertController(title: str.appName, message: message, preferredStyle: .alert)
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
                 if #available(iOS 13.0, *) {
                     alert.overrideUserInterfaceStyle = .dark
                 } else {
                     // Fallback on earlier versions
                 }
-                
+                alert.view.tintColor = UIColor.secondary
+
                 alert.addAction(UIAlertAction(title: str.ok, style: .default) { action in
                     delay(0) {
                         self.navigationController?.popViewController(animated: true)

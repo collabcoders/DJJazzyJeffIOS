@@ -405,8 +405,9 @@ class WebServiceHelper: NSObject,InternetAccessDelegate {
                     indicatorHide()
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                        let alert = UIAlertController(title: Application.appName, message: response["msg"]! as? String, preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        let alert = UIAlertController(title: str.error, message: response["msg"]! as? String, preferredStyle: UIAlertController.Style.alert)
+                        alert.view.tintColor = UIColor.secondary
+                        alert.addAction(UIAlertAction(title: str.ok, style: UIAlertAction.Style.default, handler: nil))
                         GlobalConstants.appDelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     })
                 }

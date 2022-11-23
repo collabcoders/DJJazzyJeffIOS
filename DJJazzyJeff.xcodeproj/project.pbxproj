@@ -325,8 +325,8 @@
 		C5165C82292DF65F00EAD1B7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C5165C83292DF65F00EAD1B7 /* Home.storyboard */,
 				C5165C84292DF65F00EAD1B7 /* Login.storyboard */,
+				C5165C83292DF65F00EAD1B7 /* Home.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -628,7 +628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1001;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 599267FNH5;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -662,7 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1001;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 599267FNH5;
 				GENERATE_INFOPLIST_FILE = YES;

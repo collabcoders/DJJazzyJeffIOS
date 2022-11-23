@@ -10,7 +10,7 @@ import UIKit
 
 enum Application {
     
-    static let appName: String = str.appName
+//    static let appName: String = str.appName
 
     static let PageLimit = checkDeviceiPad() ? 15 : 10
     static let top10Limit = 10

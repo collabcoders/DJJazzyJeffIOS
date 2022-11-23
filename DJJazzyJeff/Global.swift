@@ -225,12 +225,13 @@ func SetTheFont(fontName :String, size :Double) -> UIFont {
 //............................... ALERT MESSAGE ...............................................//
 func showAlertMessage(strMessage: String) {
 
-    let alert = UIAlertController(title: Application.appName, message: strMessage, preferredStyle: UIAlertController.Style.alert)
+    let alert = UIAlertController(title: nil, message: strMessage, preferredStyle: UIAlertController.Style.alert)
     if #available(iOS 13.0, *) {
         alert.overrideUserInterfaceStyle = .dark
     } else {
         // Fallback on earlier versions
     }
+    alert.view.tintColor = UIColor.secondary
     alert.addAction(UIAlertAction(title: str.ok, style: UIAlertAction.Style.default, handler: nil))
     getTopViewController?.present(alert, animated: true, completion: nil)
 }
@@ -243,30 +244,13 @@ func showAlertErrorMessage(strMessage: String) {
     } else {
         // Fallback on earlier versions
     }
+    alert.view.tintColor = UIColor.secondary
     alert.addAction(UIAlertAction(title: str.ok, style: UIAlertAction.Style.default, handler: nil))
     getTopViewController?.present(alert, animated: true, completion: nil)
 }
 
 
-func showAlertMessage(strMessage: String, button:String) {
 
-    let alert = UIAlertController(title: Application.appName, message: strMessage, preferredStyle: UIAlertController.Style.alert)
-    if #available(iOS 13.0, *) {
-        alert.overrideUserInterfaceStyle = .dark
-    } else {
-        // Fallback on earlier versions
-    }
-    alert.addAction(UIAlertAction(title: button, style: UIAlertAction.Style.default, handler: nil))
-    getTopViewController?.present(alert, animated: true, completion: nil)
-
-    //    //POPUP
-    //    let window = UIApplication.shared.keyWindow!
-    //    window.endEditing(true)
-    //    let aleartView = AlertMessage(frame: CGRect(x: 0, y: 0 ,width : window.frame.width, height: window.frame.height))
-    //    aleartView.loadPopUpView(strMessage: strMessage)
-    //    window.addSubview(aleartView)
-        
-}
 
 
 func showAlertMessageWithTitle(strTitle : String, strMessage: String, button:String) {
@@ -277,7 +261,7 @@ func showAlertMessageWithTitle(strTitle : String, strMessage: String, button:Str
     } else {
         // Fallback on earlier versions
     }
-
+    alert.view.tintColor = UIColor.secondary
     alert.addAction(UIAlertAction(title: button, style: UIAlertAction.Style.default, handler: nil))
     getTopViewController?.present(alert, animated: true, completion: nil)
 
@@ -291,24 +275,6 @@ func showAlertMessageWithTitle(strTitle : String, strMessage: String, button:Str
 }
 
 
-
-//func showAlertSyncingData(strMessage: String) {
-//    
-//    let alert = UIAlertController(title: Application.appName, message: strMessage, preferredStyle: UIAlertController.Style.alert)
-//    
-//    alert.addAction(UIAlertAction(title: "Setting", style: .default, handler: { (_) in
-//        if let url = URL(string: UIApplication.openSettingsURLString){
-//            if #available(iOS 10.0, *){
-//                UIApplication.shared.open(url, completionHandler: nil)
-//            } else{
-//                UIApplication.shared.openURL(url)
-//            }
-//        }
-//    }))
-//    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-//    
-//    GlobalConstants.appDelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
-//}
 func convertSeccountToTime(remainingTime : Int) -> String{
     let hours = Int(remainingTime) / 3600
     let minutes = (Int(remainingTime) - hours * 3600) / 60

@@ -98,6 +98,7 @@ extension LoginViewController{
         } else {
             // Fallback on earlier versions
         }
+        alert.view.tintColor = UIColor.secondary
         alert.addTextField() { newTextField in
             newTextField.placeholder = str.strEmail
         }

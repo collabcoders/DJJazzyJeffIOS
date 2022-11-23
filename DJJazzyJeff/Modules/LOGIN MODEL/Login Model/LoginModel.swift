@@ -148,7 +148,7 @@ extension LoginViewController :WebServiceHelperDelegate{
             else if strRequest == "forgetPassword"{
                 print(data)
                 if let message = data["msg"] as? String{
-                    showAlertErrorMessage(strMessage: message)
+                    showAlertMessage(strMessage: message)
                 }
             }
 

@@ -37,7 +37,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController{
     
     @IBAction func btnLogOutClicked(_ sender: UIButton) {
-        let alert = UIAlertController(title: Application.appName, message: str.areYouSureYouWantToLogout, preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: str.areYouSureYouWantToLogout, preferredStyle: .alert)
+        alert.view.tintColor = UIColor.secondary
         alert.addAction(UIAlertAction(title: str.yes, style: .default,handler: { (Action) in
             
           
