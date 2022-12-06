@@ -14,34 +14,16 @@ enum NSUDKey {
     static let language = "language"
     static let userData = "userData"
     
-    static let socialToken = "socialToken"
 }
 
 
 extension Notification.Name {
     static let languageUpdate = Notification.Name("languageUpdate")
-    static let screenRecording = Notification.Name("screenRecording")
-    static let homeScreen = Notification.Name("homeScreen")
-    static let liveScreen = Notification.Name("liveScreen")
-    static let closeApp = Notification.Name("closeApp")
-    static let purchasePlan = Notification.Name("purchasePlan")
-    static let screenRoted = Notification.Name("screenRoted")
-
-
-    static let showAPI = Notification.Name("showAPI")
-    static let reloadHomePage = Notification.Name("reloadHomePage")
-
-    static let playTheVideo = Notification.Name("playTheVideo")
-
-    //SCROLL
-    static let homeScroll = Notification.Name("homeScroll")
-    static let searchScroll = Notification.Name("searchScroll")
-    static let progreamScroll = Notification.Name("progreamScroll")
-
+    static let plsyMusic = Notification.Name("plsyMusic")
+    
     //VIDEO
     static let activationBlock = Notification.Name("activationBlock")
     static let deactivationBlock = Notification.Name("deactivationBlock")
-
 
 }
 
@@ -140,23 +122,6 @@ extension UserDefaults{
             }
             else{
                 set(newValue, forKey: NSUDKey.deviceToken)
-            }
-            synchronize()
-        }
-    }
-    
-    
-    
-    var socialToken: String?{
-        get {
-            return string(forKey: NSUDKey.socialToken)
-        }
-        set {
-            if newValue == nil {
-                removeObject(forKey: NSUDKey.socialToken)
-            }
-            else{
-                set(newValue, forKey: NSUDKey.socialToken)
             }
             synchronize()
         }

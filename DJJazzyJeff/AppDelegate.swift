@@ -6,6 +6,24 @@
 //
 
 import UIKit
+import RHPlaceholder
+import AVFAudio
+import AVKit
+import MediaPlayer
+
+//LOADER
+public let placeholderMarker = Placeholder()
+
+//GLOBAL VARIABLE
+public var isMusicViewOpen : Bool = false
+
+var musicView = MusicTabView()
+
+//PLAYER
+var playerVideo: AVPlayer?
+var playerItem: AVPlayerItem!
+var playerTimer: Timer?
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         
         return true
     }

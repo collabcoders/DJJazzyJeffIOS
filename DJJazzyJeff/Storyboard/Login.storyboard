@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="AOB-Gn-Hm4">
-                                <rect key="frame" x="186.66666666666666" y="778" width="20" height="20"/>
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -49,7 +49,7 @@
                             <constraint firstItem="AOB-Gn-Hm4" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="2CE-0n-SPU"/>
                             <constraint firstAttribute="bottom" secondItem="gyu-7f-Xkp" secondAttribute="bottom" id="2au-hD-Via"/>
                             <constraint firstItem="gyu-7f-Xkp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="CjF-aU-gda"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="AOB-Gn-Hm4" secondAttribute="bottom" constant="20" id="ECW-sz-6EW"/>
+                            <constraint firstItem="AOB-Gn-Hm4" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="mqt-PA-2tH"/>
                             <constraint firstItem="gyu-7f-Xkp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qO0-oJ-IxZ"/>
                             <constraint firstItem="gyu-7f-Xkp" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="wi7-V8-cPZ"/>
                         </constraints>

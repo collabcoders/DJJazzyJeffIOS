@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 class SplashViewController: UIViewController {
     var window: UIWindow?
@@ -17,6 +18,10 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //SET POPUP
+        musicView = MusicTabView(frame: CGRect(x: 0, y: (GlobalConstants.appDelegate?.window?.frame.height ?? 0) - manageWidth(size: 220) ,width : GlobalConstants.appDelegate?.window?.frame.width ?? 0, height: manageWidth(size: 220)))
+
     }
     
 
@@ -45,14 +50,32 @@ class SplashViewController: UIViewController {
 
         if UserDefaults.standard.user != nil{
             //MOVE TO HOME SCREEN
-            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
-            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController{
-                /* Initiating instance of ui-navigation-controller with view-controller */
-                let navigationController = UINavigationController()
-                navigationController.viewControllers = [newViewController]
-                GlobalConstants.appDelegate?.window?.rootViewController = navigationController
+//            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
+//            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController{
+//                /* Initiating instance of ui-navigation-controller with view-controller */
+//                let navigationController = UINavigationController()
+//                navigationController.viewControllers = [newViewController]
+//                GlobalConstants.appDelegate?.window?.rootViewController = navigationController
+//                GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
+//            }
+
+            //MOVE TO TABBAR
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.TABBAR, bundle: nil)
+                guard let tabBariewController = storyBoard.instantiateViewController(withIdentifier: "TabbarViewController") as? TabbarViewController,
+                      let leftMenuViewController = storyBoard.instantiateViewController(withIdentifier: "LeftMenuViewController") as? LeftMenuViewController,
+                      let rightMenuController = storyBoard.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuViewController else {
+                          return
+                      }
+                
+        //        let navigationViewController: UINavigationController = UINavigationController(rootViewController: tabBariewController)
+                //Create Side Menu View Controller with main, left and right view controller
+                let sideMenuViewController = SlideMenuController(mainViewController: tabBariewController, leftMenuViewController: leftMenuViewController, rightMenuViewController: rightMenuController)
+                GlobalConstants.appDelegate?.window?.rootViewController = sideMenuViewController
                 GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
             }
+
+            
 
         }
         else{

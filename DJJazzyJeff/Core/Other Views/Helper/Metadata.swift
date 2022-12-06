@@ -64,7 +64,7 @@ enum Application {
 
     
     //IMAGE / VIDEO URL
-    static let imgURL = ""
+    static let imgURL = "https://www.mixapps.io/content/djjazzyjeff/"
 //    static let vidoeURL = ""
     
     //URL

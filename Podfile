@@ -22,7 +22,11 @@ target 'DJJazzyJeff' do
 
   #LOADING
   pod 'KRProgressHUD'
+  pod 'RHPlaceholder'
 
   #TEXT FIELD EFFECTS
   pod 'TextFieldEffects'
+  
+  #SLIDE MENU
+  pod 'SlideMenuControllerSwift'
 end

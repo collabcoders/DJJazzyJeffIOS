@@ -46,8 +46,9 @@ struct GlobalConstants
     
     //STOREBORD NAME
     static let LOGIN_MODEL = "Login"
+    static let SLIDEMENU_MODEL = "SlideMenu"
     static let TABBAR = "TabBar"
-    
+
     static let HOME_MODEL = "Home"
     static let HOME_IPAD_MODEL = "Home_iPad"
     static let PLAYER_MODEL = "Player"
@@ -306,6 +307,14 @@ func convertSeccountToTime(remainingTime : Int) -> String{
     
     return timing
 }
+func registrerTableView(tblView : UITableView , tblCell : String){
+    tblView.register(UINib(nibName: tblCell, bundle: nil), forCellReuseIdentifier: tblCell)
+}
+
+func registrerCollectionView(objCollection : UICollectionView , collectionCell : String){
+    objCollection.register(UINib(nibName: collectionCell, bundle: nil), forCellWithReuseIdentifier: collectionCell)
+}
+
 
 
 //MARK: - SET KEYBOARD
@@ -331,28 +340,11 @@ func indicatorShow(){
         .show(withMessage: str.appLoading)
 }
 
-func indicatorShowEmpty(){
-    KRProgressHUD
-        .set(style: .custom(background:  UIColor.clear , text: UIColor.white, icon: nil))
-        .set(activityIndicatorViewColors: [UIColor.clear])
-        .set(font: SetTheFont(fontName: GlobalConstants.APP_FONT_Bold, size: 14.0))
-        .show(withMessage: "")
-}
+
 func indicatorHide(){
     KRProgressHUD.dismiss()
 }
 
-
-
-func startLoading (){
-    DispatchQueue.main.async {
-        indicatorShowEmpty()
-    }
-}
-
-func storeLoading(){
-    indicatorHide()
-}
 
 
 //............................ NAVIGATION BAR ............................................//
@@ -644,14 +636,14 @@ func setButtonNavigationBarFor(controller: UIViewController,
     if #available(iOS 15, *) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.primary
+        appearance.backgroundColor = UIColor.clear
         appearance.shadowColor = .clear
 
         navigationController.navigationBar.standardAppearance = appearance
         navigationController.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    navigationController.navigationBar.barTintColor = UIColor.primary
+    navigationController.navigationBar.barTintColor = UIColor.clear
     navigationController.navigationBar.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.secondary!,
          NSAttributedString.Key.font: SetTheFont(fontName: GlobalConstants.APP_FONT_Bold, size: 16.0)]
@@ -1017,7 +1009,13 @@ enum Url {
 
     static let forgetPassword = NSURL(string: "\(Application.BaseURL)MemberPassReset\(Application.appAPIName)")!
 
+    //HOME SCREE
+    static let homeBanner = NSURL(string: "\(Application.BaseURL)ads\(Application.appAPIName)")!
+    static let AllVideo = NSURL(string: "\(Application.BaseURL)Videos\(Application.appAPIName)&category=livestream--&client=hls")!
+    static let AllMusic = NSURL(string: "\(Application.BaseURL)Music\(Application.appAPIName)&sort=date&dir=desc")!
+
 }
+//https://www.mixapps.io/api/App/Music?app=djjazzyjeff&sort=date&dir=desc
 
 
 extension UIImage {

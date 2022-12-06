@@ -75,4 +75,17 @@ struct Text {
     var noNetTitle2 = "Please check your network connectivity and try again".localized()
     var strRetry = "Retry".localized()
 
+    
+    //MENU SCREE
+    var strLiveStream = "LIVESTREAM".localized()
+    var strVideos = "VIDEOS".localized()
+    var strMusic = "MUSIC".localized()
+    var strStore = "STORE".localized()
+    var strUpgrade = "UPGRADE".localized()
+    var strFavorites = "FAVORITES".localized()
+    var strSignOut = "SIGN OUT".localized()
+
+    //HOME PAGE
+    var strAllVideo = "FEATURED VIDEOS".localized()
+    var strAllMusic = "FEATURED MUSIC".localized()
 }
