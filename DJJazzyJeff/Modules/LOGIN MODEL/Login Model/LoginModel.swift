@@ -118,7 +118,11 @@ extension LoginViewController :WebServiceHelperDelegate{
 
             if strRequest == "login" {
                 let userData = data["data"] as! NSDictionary
-              
+                
+                //WELCOME MESSAGE
+                showAlertMessage(strMessage: data.getStringForID(key: "msg"))
+                
+                
                 //SAVE USER DATA
                 let userObj = User()
                 userObj.memberId = userData.getStringForID(key: "memberId")
@@ -128,21 +132,14 @@ extension LoginViewController :WebServiceHelperDelegate{
                 userObj.plan = userData.getStringForID(key: "plan")
                 userObj.token = userData.getStringForID(key: "token")
 
+                //SAVE TOKEN
+                UserDefaults.standard.accessToken = userData.getStringForID(key: "token")
+                
                 //SAVE OBJECT
                 UserDefaults.standard.user = userObj
-
               
-                //MOVE TO HOME SCREEN
-                let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
-                if let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController{
-                    /* Initiating instance of ui-navigation-controller with view-controller */
-                    let navigationController = UINavigationController()
-                    navigationController.viewControllers = [newViewController]
-                    GlobalConstants.appDelegate?.window?.rootViewController = navigationController
-                    GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
-                }
-
-                
+                //MOVE TO HOME SCREN
+                moveToHomeSCree()
                
             }
             else if strRequest == "forgetPassword"{

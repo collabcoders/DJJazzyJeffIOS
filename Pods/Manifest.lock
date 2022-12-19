@@ -8,7 +8,6 @@ PODS:
   - Nuke (10.7.1)
   - ObjectMapper (4.2.0)
   - RHPlaceholder (0.0.6)
-  - SlideMenuControllerSwift (4.0.0)
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
@@ -19,7 +18,6 @@ DEPENDENCIES:
   - Nuke
   - ObjectMapper
   - RHPlaceholder
-  - SlideMenuControllerSwift
   - TextFieldEffects
 
 SPEC REPOS:
@@ -32,7 +30,6 @@ SPEC REPOS:
     - Nuke
     - ObjectMapper
     - RHPlaceholder
-    - SlideMenuControllerSwift
     - TextFieldEffects
 
 SPEC CHECKSUMS:
@@ -44,9 +41,8 @@ SPEC CHECKSUMS:
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RHPlaceholder: bb104aa0327854ae63daa34d103d8f0e30eb9a33
-  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 77b013f6b644bc21f6df666a64b595170e11cda6
+PODFILE CHECKSUM: 7f01a3aa9f1995d8fdb3b4cc04769c98d955e24f
 
 COCOAPODS: 1.11.3

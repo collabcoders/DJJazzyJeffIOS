@@ -26,7 +26,5 @@ target 'DJJazzyJeff' do
 
   #TEXT FIELD EFFECTS
   pod 'TextFieldEffects'
-  
-  #SLIDE MENU
-  pod 'SlideMenuControllerSwift'
+
 end

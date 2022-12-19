@@ -74,6 +74,7 @@ struct AllVideoModel: Mappable{
 
 struct AllMusicModel: Mappable{
     internal var musicId: Int?
+    internal var favId: Int = 0
     internal var title: String?
     internal var artist: String?
     internal var genre: String?
@@ -83,6 +84,7 @@ struct AllMusicModel: Mappable{
     internal var file: String?
     internal var description: String?
     internal var featured: Int?
+    internal var date: String?
 
     init?(map:Map) {
         mapping(map: map)
@@ -90,6 +92,7 @@ struct AllMusicModel: Mappable{
     
     mutating func mapping(map:Map){
         musicId <- map["musicId"]
+        favId <- map["favId"]
         title <- map["title"]
         artist <- map["artist"]
         genre <- map["genre"]
@@ -99,6 +102,7 @@ struct AllMusicModel: Mappable{
         file <- map["file"]
         description <- map["description"]
         featured <- map["featured"]
+        date <- map["date"]
     }
 }
 

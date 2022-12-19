@@ -88,4 +88,19 @@ struct Text {
     //HOME PAGE
     var strAllVideo = "FEATURED VIDEOS".localized()
     var strAllMusic = "FEATURED MUSIC".localized()
+    
+    //MUSIC PAGE
+    var strSearch = "Search".localized()
+    var strFavoriteAlert = "free members cannot create Favorites playlist. To upgrade tap the 'Upgrade' link on the home screen slide menu.".localized()
+    var strSaveFavorite = "Music added to your Favorites.".localized()
+    var strRemoveFavorite = "Music remove to your Favorites.".localized()
+
+    var strMenuTitle = "Music Categories".localized()
+    var strMenuAllMusic = "All Music".localized()
+    var strMenuFeturedMixes = "Fetured Mixes".localized()
+    var strMenuFetured = "Summertime Miztapes".localized()
+    var strMenuFeturedMusic = "Fetured Music".localized()
+    var strMenuJeeffs = "Jeff's Beetz".localized()
+    var strMenuCancel = "Cancel".localized()
+    
 }

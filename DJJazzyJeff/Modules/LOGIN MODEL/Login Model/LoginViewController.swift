@@ -47,8 +47,13 @@ class LoginViewController: UIViewController {
         
         
         #if DEBUG
+        //FREE
         self.txtEmail.text = "khatri6168@gmail.com"
         self.txtPassword.text = "123123"
+
+        //PAID
+        self.txtEmail.text = "johnnyja78@gmail.com"
+        self.txtPassword.text = "arg209"
         #endif
         
     }

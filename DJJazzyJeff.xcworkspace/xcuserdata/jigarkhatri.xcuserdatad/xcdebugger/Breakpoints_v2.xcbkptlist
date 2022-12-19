@@ -7,144 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4BBF271A-1219-4A17-8093-D89D63F8A205"
+            uuid = "05E081B2-F5EF-4762-B55E-56B8554D2F75"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
+            filePath = "DJJazzyJeff/Modules/HOME MODEL/Favorites/FavoritesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
-            landmarkName = "openRightWithVelocity(_:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "textFieldDidChangeSearch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8A3A50E9-F7CB-4985-96D5-950941B30E47"
+            uuid = "65C70BF1-0126-4F2E-B344-8EE63A6E0546"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
+            filePath = "DJJazzyJeff/Modules/HOME MODEL/Music/MusicModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
-            landmarkName = "closeRightWithVelocity(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8A3A50E9-F7CB-4985-96D5-950941B30E47 - b14d50e9e2dd96c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SlideMenuControllerSwift.SlideMenuController.closeRightWithVelocity(CoreGraphics.CGFloat) -&gt; ()"
-                  moduleName = "SlideMenuControllerSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Applications/Development/UpWork/Johnny%20Arguelles/Source%20Code/DJJazzyJeffIOS/Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "635"
-                  endingLineNumber = "635"
-                  offsetFromSymbolStart = "1359">
-               </Location>
-               <Location
-                  uuid = "8A3A50E9-F7CB-4985-96D5-950941B30E47 - b11c782f91d1156d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Value Promoted from Box&gt; of closure #1 () -&gt; () in SlideMenuControllerSwift.SlideMenuController.closeRightWithVelocity(CoreGraphics.CGFloat) -&gt; ()"
-                  moduleName = "SlideMenuControllerSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Applications/Development/UpWork/Johnny%20Arguelles/Source%20Code/DJJazzyJeffIOS/Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "635"
-                  endingLineNumber = "635"
-                  offsetFromSymbolStart = "139">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BCE92981-005C-4987-8C0A-9F978C7E711A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "868"
-            endingLineNumber = "868"
-            landmarkName = "applyLeftContentViewScale()"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "appDataDidSuccess(_:request:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "11AF15C1-B2D2-429D-ABAC-244F31A1B3F9"
+            uuid = "C84E7D3C-A237-41E2-B37F-90E134082436"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/SlideMenuControllerSwift/Source/SlideMenuController.swift"
+            filePath = "DJJazzyJeff/Modules/HOME MODEL/Music/MusicModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "876"
-            endingLineNumber = "876"
-            landmarkName = "applyRightContentViewScale()"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "appDataDidSuccess(_:request:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8BA30B95-832A-4245-B517-8135441DD541"
+            uuid = "D435D84B-A988-4104-9BF2-17DBE21FA837"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DJJazzyJeff/Modules/HOME MODEL/Home/HomeViewController.swift"
+            filePath = "DJJazzyJeff/Modules/HOME MODEL/Music/MusicViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "544"
-            endingLineNumber = "544"
-            landmarkName = "getThumbnailImage(forUrl:)"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "btnSelectMenuClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "51855D05-56F8-490F-AF25-15730BEFCAF5"
+            uuid = "1F47C299-BD47-4615-8DA9-384CCA72724D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DJJazzyJeff/Modules/HOME MODEL/Home/HomeViewController.swift"
+            filePath = "DJJazzyJeff/Modules/HOME MODEL/Music/MusicModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
-            landmarkName = "getThumbnailImage(forUrl:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "37BF093C-C2A4-487E-8882-9C52A2766F55"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DJJazzyJeff/Modules/HOME MODEL/Home/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getCategoryAPI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

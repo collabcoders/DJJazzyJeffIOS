@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 import Nuke
 import AVFoundation
 
@@ -77,13 +76,14 @@ class HomeViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         
         //SET NAVIGAITON AND TABBAR
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(!isLoading, animated: animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
 
         //SET NAVIGATION BAR
         setButtonNavigationBarFor(controller: self, title: "sdf", isTransperent: false, hideShadowImage: true, leftIcon: "icon_menu", rightIcon: "") {SelectTag in
             
+            self.slideMenuController()?.delegate = self
             self.slideMenuController()?.toggleLeft()
 
             
@@ -165,24 +165,6 @@ class HomeViewController: UIViewController {
 
 
 
-
-//MARK: - BUTTON ACTION
-extension HomeViewController{
-    
-    @IBAction func btnLogOutClicked(_ sender: UIButton) {
-
-        let alert = UIAlertController(title: nil, message: str.areYouSureYouWantToLogout, preferredStyle: .alert)
-        alert.view.tintColor = UIColor.secondary
-        alert.addAction(UIAlertAction(title: str.yes, style: .default,handler: { (Action) in
-
-
-            LogOutUser()
-
-        }))
-        alert.addAction(UIAlertAction(title: str.no, style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
-}
 
 
 
@@ -428,11 +410,12 @@ extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSour
             //SET DETAILS
             let obj = self.arrAllVideo[indexPath.row]
             cell.imgBanner.backgroundColor = UIColor.clear
-            cell.lblTitle.configureLable(textColor: .secondary, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 16.0, text: obj.title ?? "")
+            cell.lblTitle.configureLable(textColor: .secondary, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 18.0, text: obj.title ?? "")
             cell.lblTitle.textAlignment = .center
 
             //SET IMAGE
             DispatchQueue.main.async {
+                cell.imgBanner.image = nil
                 if let strImg = obj.screenshot{
                     let imgURL =  ("\(strImg)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) ?? ""
                     if let url = URL(string: imgURL.replacingOccurrences(of: " ", with: "%20")){
@@ -468,9 +451,9 @@ extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSour
             //SET DETAILS
             let obj = self.arrAllMusic[indexPath.row]
             cell.imgBanner.backgroundColor = UIColor.clear
-            cell.lblTitle.configureLable(textColor: .primary, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 18.0, text: obj.title ?? "")
+            cell.lblTitle.configureLable(textColor: .secondary, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 18.0, text: obj.title ?? "")
             cell.lblTitle.textAlignment = .left
-            cell.lblDuration.configureLable(textColor: .primary, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 16.0, text: obj.duration ?? "")
+            cell.lblDuration.configureLable(textColor: UIColor.lightGray, fontName: GlobalConstants.APP_FONT_Medium, fontSize: 16.0, text: obj.duration ?? "")
             cell.lblDuration.textAlignment = .left
 
             
@@ -515,14 +498,13 @@ extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSour
              
              let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
              window?.endEditing(true)
-             musicView.commonInit(objData: self.arrAllMusic[indexPath.row])
+             musicView.commonInit(objData: self.arrAllMusic[indexPath.row], isFavorite: false)
              if isMusicViewOpen == false {
                  window?.addSubview(musicView)
              }
         }
     }
 }
-
 
 
 extension String {
@@ -552,4 +534,68 @@ func getThumbnailImage(forUrl url: URL) -> UIImage? {
     }
 
     return nil
+}
+
+
+extension HomeViewController: SlideMenuControllerDelegate{
+    func rightDidClose(strName: String) {
+    }
+    
+    func leftWillClose(strName: String) {
+        slideMenuClickedEvent(navigation: self.navigationController!, strName: strName)
+    }
+
+
+    func slideMenuClickedEvent(navigation : UINavigationController, strName: String){
+        if strName == str.strLiveStream{
+         
+            
+            //MOVE LIVE SCREEN
+            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
+            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "LiveStreamingViewController") as? LiveStreamingViewController{
+                navigation.pushViewController(newViewController, animated: false)
+            }
+        }
+        else if strName == str.strVideos{
+            
+        }
+        else if strName == str.strMusic{
+            //MOVE MUISC SCREEN
+            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
+            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "MusicViewController") as? MusicViewController{
+                navigation.pushViewController(newViewController, animated: false)
+            }
+        }
+        else if strName == str.strStore{
+            
+        }
+        else if strName == str.strUpgrade{
+            
+        }
+        else if strName == str.strFavorites{
+            //MOVE FACORITE SCREEN
+            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
+            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "FavoritesViewController") as? FavoritesViewController{
+                navigation.pushViewController(newViewController, animated: false)
+            }
+        }
+        else if strName == str.strSignOut{
+            let alert = UIAlertController(title: nil, message: str.areYouSureYouWantToLogout, preferredStyle: .alert)
+            if #available(iOS 13.0, *) {
+                alert.overrideUserInterfaceStyle = .dark
+            } else {
+                // Fallback on earlier versions
+            }
+            alert.view.tintColor = UIColor.secondary
+            alert.addAction(UIAlertAction(title: str.yes, style: .default,handler: { (Action) in
+
+
+                LogOutUser()
+
+            }))
+            alert.addAction(UIAlertAction(title: str.no, style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+
 }

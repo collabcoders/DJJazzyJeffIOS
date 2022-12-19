@@ -27,17 +27,20 @@ class MusicTabView: UIView {
 
     @IBOutlet weak var btnPlayPush: UIButton!
 
+    @IBOutlet weak var imgLike: UIImageView!
+
     //PLAYER
     var isSlideMusic : Bool = false
-    var isMusicPlay : Bool = false
-    
+    var strPlayMusicID : Int = 0
+    var strFavID : Int = 0
+    var isisFavorite : Bool = false
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
     }
     
-    public func commonInit(objData : AllMusicModel) {
+    public func commonInit(objData : AllMusicModel, isFavorite : Bool) {
         
         backgroundColor = .clear
         clipsToBounds = true
@@ -49,8 +52,12 @@ class MusicTabView: UIView {
         contentView.backgroundColor = .black
         
         //SET THE VIEW
-        setTheView()
-        setTheViewFrame(objData: objData)
+        self.isisFavorite = isFavorite
+        self.imgLike.image = UIImage(named: isFavorite ? "icon_Like" : "icon_UnLike")
+        self.strPlayMusicID = objData.musicId ?? 0
+        self.strFavID = objData.favId
+        self.setTheView()
+        self.setTheViewFrame(objData: objData, isFavorite: isFavorite)
     }
  
     
@@ -63,9 +70,9 @@ class MusicTabView: UIView {
     }
  
 
-    func setTheViewFrame(objData : AllMusicModel){
+    func setTheViewFrame(objData : AllMusicModel, isFavorite : Bool){
         //SET VIEW
-        self.setTheMusicTab(objData: objData)
+        self.setTheMusicTab(objData: objData, isFavorite: isFavorite)
         
         //SET ANIMATION
         if isMusicViewOpen == false {
@@ -110,10 +117,10 @@ class MusicTabView: UIView {
     }
     
     
-    @objc func removeMusicView(){
-        if isMusicPlay == false{
-            return
-        }
+    @objc func  removeMusicView(){
+//        if isMusicPlay == false{
+//            return
+//        }
         
         UIView.animate(withDuration: 0.5,
                        delay: 0,
@@ -139,7 +146,7 @@ class MusicTabView: UIView {
         })
     }
     
-    func setTheMusicTab(objData : AllMusicModel){
+    func setTheMusicTab(objData : AllMusicModel, isFavorite : Bool){
 
         //SET FONT
         self.lblTime.configureLable(textColor: .primary, fontName: GlobalConstants.APP_FONT_Bold, fontSize: 12.0, text: "-\(objData.duration ?? "")")
@@ -160,12 +167,23 @@ class MusicTabView: UIView {
 
         //SET MUSIC
         delay(1.0) {
-            if let strMusic = objData.file{
-                let strUrl =  ("\(Application.imgURL)\(strMusic)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) ?? ""
-                if let url = URL(string: strUrl.replacingOccurrences(of: " ", with: "%20")){
-                    self.playVideo(url: url, strTitle: objData.title ?? "")
+            if isFavorite{
+                if let strMusic = objData.file{
+                    let strUrl =  ("\(strMusic)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) ?? ""
+                    if let url = URL(string: strUrl.replacingOccurrences(of: " ", with: "%20")){
+                        self.playVideo(url: url, strTitle: objData.title ?? "")
+                    }
                 }
             }
+            else{
+                if let strMusic = objData.file{
+                    let strUrl =  ("\(Application.imgURL)\(strMusic)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) ?? ""
+                    if let url = URL(string: strUrl.replacingOccurrences(of: " ", with: "%20")){
+                        self.playVideo(url: url, strTitle: objData.title ?? "")
+                    }
+                }
+            }
+           
         }
         
         
@@ -181,6 +199,10 @@ class MusicTabView: UIView {
         }
     }
     
+    @IBAction func btnRemovePopupClicked(sender : UIButton) {
+        self.removeMusicView()
+    }
+    
     @IBAction func btnPlayPushClicked(sender : UIButton) {
         if isMusicPlay == false{
             playerVideo?.pause()
@@ -191,6 +213,25 @@ class MusicTabView: UIView {
             playerVideo?.play()
             isMusicPlay = false
             self.btnPlayPush.setBackgroundImage( UIImage(named: "icon_push"), for: .normal)
+        }
+    }
+    
+    @IBAction func btnNextClciked(sender: UIButton){
+        //SET SEEKP TIME
+        let maxDuration = CMTimeGetSeconds((playerVideo?.currentItem?.asset.duration)!)
+        let currentTime:Double = playerVideo?.currentItem?.currentTime().seconds ?? 0
+
+        if maxDuration - 30 > currentTime + 30{
+            seekToSec(Float64(currentTime + 30))
+        }
+    }
+    
+    @IBAction func btnPreviousClicked(sender: UIButton){
+        //SET SEEKP TIME
+        let currentTime:Double = playerVideo?.currentItem?.currentTime().seconds ?? 0
+
+        if 30 < currentTime - 30{
+            seekToSec(Float64(currentTime - 30))
         }
     }
     
@@ -225,6 +266,18 @@ class MusicTabView: UIView {
                 
             default:
                 break
+            }
+        }
+    }
+    
+    @IBAction func btnFavoriteClicked(sender : UIButton) {
+        if let objUser = UserDefaults.standard.user{
+            if objUser.plan?.lowercased() == "free"{
+                showAlertMessage(strMessage: str.strFavoriteAlert)
+            }
+            else{
+                //CALL API
+                self.updateFavoriteMusic(FavoritesParameater: FavoritesParameater(favId: self.strFavID, itemId: self.strPlayMusicID, section: "music"))
             }
         }
     }
@@ -283,16 +336,18 @@ class MusicTabView: UIView {
     
     @objc func currntPlayTiming() {
         // Start PLAYING
-        if playerVideo == nil {
+        guard let playerVideo = playerVideo else {
             return
         }
-
+        
+      
         //SET LOADING
         self.setLoader(isLoading: false)
 
         //SET TIME
-        let currentTime = CMTimeGetSeconds((playerVideo?.currentTime())!)
-        let maxDuration = CMTimeGetSeconds((playerVideo?.currentItem?.asset.duration)!)
+        
+        let currentTime = CMTimeGetSeconds((playerVideo.currentTime()))
+        let maxDuration = CMTimeGetSeconds((playerVideo.currentItem?.asset.duration)!)
         
         if isSlideMusic == false{
             objSlider.setValue(Float(currentTime/maxDuration), animated: true)
@@ -302,7 +357,7 @@ class MusicTabView: UIView {
             self.lblTime.text = "-\(secondsToHoursMinutesSeconds(seconds: Int(maxDuration - currentTime)))"
         } else {
             //STOP PLAYER
-            playerVideo?.pause()
+            playerVideo.pause()
             removeMusicView()
         }
     }

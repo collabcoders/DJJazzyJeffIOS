@@ -50,7 +50,7 @@ class WebServiceHelper: NSObject,InternetAccessDelegate {
         if strMethodName == "startDownload"{
             callAPI()
         }else if strMethodName == "startDownloadWithImage"{
-            startDownloadWithImage()
+//            startDownloadWithImage()
         }else if strMethodName == "startUploadingMultipleImagesAndVideo"{
             startUploadingMultipleImagesAndVideo()
         }
@@ -80,10 +80,48 @@ class WebServiceHelper: NSObject,InternetAccessDelegate {
                     }
                 }
 
+                //CONVERT DIC TO DATA
+                var jsonData = try JSONSerialization.data(withJSONObject: self.dictType, options: .prettyPrinted)
+                if jsonString != ""{
+                    jsonData = jsonString.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+                }
+                
+                //SET REWUEST
+                let strUrl = URL(string: "\(self.strURL)")!
+                var request = URLRequest(url: strUrl)
+
+                //Declaration for service for get,post or other..
+                if methodType == "post"{
+                    request.httpMethod = HTTPMethod.post.rawValue
+                }
+                else  if methodType == "delete"{
+                    request.httpMethod = HTTPMethod.delete.rawValue
+                }
+                else if methodType == "put"{
+                    request.httpMethod = HTTPMethod.put.rawValue
+                }
+                else{
+                    request.httpMethod = HTTPMethod.get.rawValue
+                }
+
+                
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                if let accessToken = UserDefaults.standard.accessToken{
+                    request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+                }
+                
+                //Pass paramater with value data
+                if methodType == "post" || methodType == "put"{
+                    if dictType.count != 0{
+                        request.httpBody = jsonData
+                    }
+                }
+                
                 //Calling service
                 let manager = AF
                 manager.sessionConfiguration.timeoutIntervalForRequest = 10
-                manager.request(self.strURL, method: methodType == "post" ? .post : .get, parameters: self.dictType, encoding: URLEncoding.default).responseJSON { response in
+                manager.request(request).responseJSON {
+                    (response) in
                     
                     switch response.result {
                     case .success:
@@ -137,6 +175,12 @@ class WebServiceHelper: NSObject,InternetAccessDelegate {
                  }
                 
             }
+            catch {
+                
+                //Alert show for Header
+                webservice_Nool_Load = false
+                showAlertMessage(strMessage: "\(self.strMethodName) \(str.somethingWentWrong)")
+            }
 
         }else{
             webservice_Nool_Load = false
@@ -167,82 +211,82 @@ class WebServiceHelper: NSObject,InternetAccessDelegate {
         }
     }
     
-    func startDownloadWithImage(){
-        if NetworkReachabilityManager()!.isReachable {
-            do {
-
-                webservice_Nool_Load = true
-                //Indication show hide with varible when user calling service
-                (self.indicatorShowOrHide == true) ? (indicatorShow()) : (indicatorHide())
-
-                //Base user for calling service
-                let headers: HTTPHeaders = [:]
-                                
-         
-                //Calling service
-                AF.upload(multipartFormData: { multipartFormData in
-                    
-                    multipartFormData.append(self.imageUpload!.jpegData(compressionQuality: 0.5)!, withName: self.imageUploadName , fileName: "\(self.imageUploadName).jpg", mimeType: "jpg")
-
-                    for (key, value) in self.dictType  {
-                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key )
-                    }
-                    
-                    print(multipartFormData)
-                },
-                to: self.strURL,
-                usingThreshold: UInt64.init(), method: .post,
-                headers: headers).responseJSON { response in
-                    print(response)
-                    switch response.result {
-                    
-                    case .success:
-                        let dict = response.value as! NSDictionary
-                        
-                        
-                        //Check condition for response success or not and notificatino show with coming alert in service response
-                        if self.validationForServiceResponse(dict){
-                            webservice_Nool_Load = false
-                            self.delegateWeb?.appDataDidSuccess(dict, request: self.strMethodName, index: self.selectIndex)
-                        }else{
-                            webservice_Nool_Load = false
-                            let err = NSError(domain: "data not found", code: 401, userInfo: nil)
-                            self.delegateWeb?.appDataDidFail(err, request: self.strMethodName)
-                        }
-                        
-                    case .failure(_):
-                        webservice_Nool_Load = false
-                        let err = NSError(domain: "data not found", code: 401, userInfo: nil)
-                        self.delegateWeb?.appDataDidFail(err, request: self.strMethodName)
-                    }
-                 }
-            }
-        }else{
-            webservice_Nool_Load = false
-            let ViewController = getTopViewController!
-            var NoInternetNaNavigation: UINavigationController!
-            if let view = ViewController.children.last {
-                if !(view.isKind(of: NoInternetViewController.self)){
-                    let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.LOGIN_MODEL, bundle: nil)
-                    if let newViewController = storyBoard.instantiateViewController(withIdentifier: "NoInternetViewController") as? NoInternetViewController{
-                        NoInternetNaNavigation = UINavigationController(rootViewController: newViewController)
-                        NoInternetNaNavigation.modalPresentationStyle = .fullScreen
-                        ViewController.present(NoInternetNaNavigation, animated: true, completion: nil)
-                    }
-                }
-            }
-            else{
-                if !(ViewController.isKind(of: NoInternetViewController.self)){
-                    let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.LOGIN_MODEL, bundle: nil)
-                    if let newViewController = storyBoard.instantiateViewController(withIdentifier: "NoInternetViewController") as? NoInternetViewController{
-                        NoInternetNaNavigation = UINavigationController(rootViewController: newViewController)
-                        NoInternetNaNavigation.modalPresentationStyle = .fullScreen
-                        ViewController.present(NoInternetNaNavigation, animated: true, completion: nil)
-                    }
-                }
-            }
-        }
-    }
+//    func startDownloadWithImage(){
+//        if NetworkReachabilityManager()!.isReachable {
+//            do {
+//
+//                webservice_Nool_Load = true
+//                //Indication show hide with varible when user calling service
+//                (self.indicatorShowOrHide == true) ? (indicatorShow()) : (indicatorHide())
+//
+//                //Base user for calling service
+//                let headers: HTTPHeaders = [:]
+//
+//
+//                //Calling service
+//                AF.upload(multipartFormData: { multipartFormData in
+//
+//                    multipartFormData.append(self.imageUpload!.jpegData(compressionQuality: 0.5)!, withName: self.imageUploadName , fileName: "\(self.imageUploadName).jpg", mimeType: "jpg")
+//
+//                    for (key, value) in self.dictType  {
+//                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key )
+//                    }
+//
+//                    print(multipartFormData)
+//                },
+//                to: self.strURL,
+//                usingThreshold: UInt64.init(), method: .post,
+//                headers: headers).responseJSON { response in
+//                    print(response)
+//                    switch response.result {
+//
+//                    case .success:
+//                        let dict = response.value as! NSDictionary
+//
+//
+//                        //Check condition for response success or not and notificatino show with coming alert in service response
+//                        if self.validationForServiceResponse(dict){
+//                            webservice_Nool_Load = false
+//                            self.delegateWeb?.appDataDidSuccess(dict, request: self.strMethodName, index: self.selectIndex)
+//                        }else{
+//                            webservice_Nool_Load = false
+//                            let err = NSError(domain: "data not found", code: 401, userInfo: nil)
+//                            self.delegateWeb?.appDataDidFail(err, request: self.strMethodName)
+//                        }
+//
+//                    case .failure(_):
+//                        webservice_Nool_Load = false
+//                        let err = NSError(domain: "data not found", code: 401, userInfo: nil)
+//                        self.delegateWeb?.appDataDidFail(err, request: self.strMethodName)
+//                    }
+//                 }
+//            }
+//        }else{
+//            webservice_Nool_Load = false
+//            let ViewController = getTopViewController!
+//            var NoInternetNaNavigation: UINavigationController!
+//            if let view = ViewController.children.last {
+//                if !(view.isKind(of: NoInternetViewController.self)){
+//                    let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.LOGIN_MODEL, bundle: nil)
+//                    if let newViewController = storyBoard.instantiateViewController(withIdentifier: "NoInternetViewController") as? NoInternetViewController{
+//                        NoInternetNaNavigation = UINavigationController(rootViewController: newViewController)
+//                        NoInternetNaNavigation.modalPresentationStyle = .fullScreen
+//                        ViewController.present(NoInternetNaNavigation, animated: true, completion: nil)
+//                    }
+//                }
+//            }
+//            else{
+//                if !(ViewController.isKind(of: NoInternetViewController.self)){
+//                    let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.LOGIN_MODEL, bundle: nil)
+//                    if let newViewController = storyBoard.instantiateViewController(withIdentifier: "NoInternetViewController") as? NoInternetViewController{
+//                        NoInternetNaNavigation = UINavigationController(rootViewController: newViewController)
+//                        NoInternetNaNavigation.modalPresentationStyle = .fullScreen
+//                        ViewController.present(NoInternetNaNavigation, animated: true, completion: nil)
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func startUploadingMultipleImagesAndVideo(){
 //        if NetworkReachabilityManager()!.isReachable {

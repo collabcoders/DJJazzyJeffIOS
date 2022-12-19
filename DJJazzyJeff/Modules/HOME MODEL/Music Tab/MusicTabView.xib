@@ -14,6 +14,7 @@
                 <outlet property="btnPlayPush" destination="bAJ-4Z-kl3" id="Fqm-m0-4xl"/>
                 <outlet property="con_ViewHeight" destination="6sn-Jn-cOj" id="5kI-a6-fl7"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="BY2-Es-cNC"/>
+                <outlet property="imgLike" destination="Xuw-2E-AVo" id="dt7-da-sRL"/>
                 <outlet property="imgMusic" destination="3GC-18-5tc" id="oNV-HA-EWw"/>
                 <outlet property="lblName" destination="iKA-1c-Qpj" id="WWs-Dt-kPe"/>
                 <outlet property="lblTime" destination="HCn-a3-dS6" id="JUi-Tp-WvZ"/>
@@ -47,6 +48,17 @@
                                 <constraint firstAttribute="width" secondItem="OLk-nb-fJM" secondAttribute="height" multiplier="1:1" id="vZC-gL-udf"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j4-f3-eAA">
+                            <rect key="frame" x="354.66666666666669" y="11.666666666666664" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="dOU-37-fEI"/>
+                                <constraint firstAttribute="width" constant="30" id="m8H-gE-INe"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="btnRemovePopupClickedWithSender:" destination="-1" eventType="touchUpInside" id="S79-WI-ADQ"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjn-0h-D6t">
                             <rect key="frame" x="16" y="61.666666666666657" width="361" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -87,32 +99,56 @@
                             <color key="color" name="primary"/>
                         </activityIndicatorView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg5-DZ-fQY">
-                            <rect key="frame" x="121.66666666666669" y="142.66666666666666" width="30" height="30"/>
+                            <rect key="frame" x="107.66666666666669" y="135.66666666666666" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="cjd-mp-Ljk"/>
-                                <constraint firstAttribute="height" constant="30" id="fZN-bK-y8B"/>
+                                <constraint firstAttribute="width" secondItem="Vg5-DZ-fQY" secondAttribute="height" multiplier="1:1" id="Vps-YK-26C"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="icon_Playerback"/>
+                            <connections>
+                                <action selector="btnPreviousClickedWithSender:" destination="-1" eventType="touchUpInside" id="fFz-jQ-C55"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZy-iY-NSK">
-                            <rect key="frame" x="241.66666666666663" y="142.66666666666666" width="30" height="30"/>
+                            <rect key="frame" x="241.66666666666663" y="135.66666666666666" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="JGh-Ty-fON"/>
-                                <constraint firstAttribute="height" constant="30" id="uqw-jP-oOB"/>
+                                <constraint firstAttribute="width" secondItem="uZy-iY-NSK" secondAttribute="height" multiplier="1:1" id="IFG-Cr-Nfu"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="icon_PlayerNext"/>
+                            <connections>
+                                <action selector="btnNextClcikedWithSender:" destination="-1" eventType="touchUpInside" id="0dM-IJ-8rD"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Like" translatesAutoresizingMaskIntoConstraints="NO" id="Xuw-2E-AVo">
+                            <rect key="frame" x="342" y="147.66666666666666" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Xuw-2E-AVo" secondAttribute="height" multiplier="1:1" id="05h-bp-QgP"/>
+                                <constraint firstAttribute="width" constant="20" id="FYg-3c-vKp"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD1-Xy-fOh">
+                            <rect key="frame" x="327" y="132.66666666666666" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="WFL-hu-sXN"/>
+                                <constraint firstAttribute="height" constant="50" id="xsb-Yv-CSk"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="btnFavoriteClickedWithSender:" destination="-1" eventType="touchUpInside" id="lex-3B-o7s"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="6sn-Jn-cOj"/>
+                        <constraint firstItem="1j4-f3-eAA" firstAttribute="centerY" secondItem="OLk-nb-fJM" secondAttribute="centerY" id="7P6-xe-muQ"/>
                         <constraint firstItem="HCn-a3-dS6" firstAttribute="top" secondItem="35f-fZ-AEx" secondAttribute="top" constant="16" id="7oj-RZ-nYp"/>
                         <constraint firstAttribute="trailing" secondItem="Mjn-0h-D6t" secondAttribute="trailing" constant="16" id="8gD-QR-B27"/>
                         <constraint firstItem="Vg5-DZ-fQY" firstAttribute="centerY" secondItem="bAJ-4Z-kl3" secondAttribute="centerY" id="9D8-ek-qWb"/>
                         <constraint firstItem="bAJ-4Z-kl3" firstAttribute="centerX" secondItem="Mjn-0h-D6t" secondAttribute="centerX" id="CwL-2J-JOg"/>
                         <constraint firstAttribute="trailing" secondItem="iKA-1c-Qpj" secondAttribute="trailing" constant="16" id="GqL-dH-4nS"/>
+                        <constraint firstItem="Xuw-2E-AVo" firstAttribute="centerX" secondItem="nD1-Xy-fOh" secondAttribute="centerX" id="HnS-fW-Ksd"/>
                         <constraint firstItem="iKA-1c-Qpj" firstAttribute="top" secondItem="Mjn-0h-D6t" secondAttribute="bottom" constant="8" id="I41-ok-qRy"/>
                         <constraint firstItem="bAJ-4Z-kl3" firstAttribute="top" secondItem="Mjn-0h-D6t" secondAttribute="bottom" constant="50" id="I9l-bI-bnZ"/>
                         <constraint firstItem="jig-cW-iZD" firstAttribute="leading" secondItem="HCn-a3-dS6" secondAttribute="trailing" constant="16" id="TIi-xx-ga1"/>
@@ -123,14 +159,18 @@
                         <constraint firstItem="3GC-18-5tc" firstAttribute="centerY" secondItem="bAJ-4Z-kl3" secondAttribute="centerY" id="baz-S0-i29"/>
                         <constraint firstItem="uZy-iY-NSK" firstAttribute="centerY" secondItem="bAJ-4Z-kl3" secondAttribute="centerY" id="cgJ-cf-SJl"/>
                         <constraint firstItem="OLk-nb-fJM" firstAttribute="leading" secondItem="jig-cW-iZD" secondAttribute="trailing" constant="16" id="ckh-fB-e2W"/>
+                        <constraint firstItem="Xuw-2E-AVo" firstAttribute="centerY" secondItem="nD1-Xy-fOh" secondAttribute="centerY" id="gPF-yh-OCb"/>
                         <constraint firstItem="uZy-iY-NSK" firstAttribute="leading" secondItem="bAJ-4Z-kl3" secondAttribute="trailing" constant="20" id="gyO-vw-JsC"/>
                         <constraint firstItem="jig-cW-iZD" firstAttribute="centerY" secondItem="HCn-a3-dS6" secondAttribute="centerY" id="kXW-Lz-QsK"/>
+                        <constraint firstItem="1j4-f3-eAA" firstAttribute="centerX" secondItem="OLk-nb-fJM" secondAttribute="centerX" id="kYO-S3-vrb"/>
                         <constraint firstItem="3GC-18-5tc" firstAttribute="leading" secondItem="35f-fZ-AEx" secondAttribute="leading" constant="16" id="n8R-Rv-YLn"/>
                         <constraint firstAttribute="trailing" secondItem="OLk-nb-fJM" secondAttribute="trailing" constant="16" id="ncA-Wm-06z"/>
+                        <constraint firstItem="nD1-Xy-fOh" firstAttribute="centerY" secondItem="3GC-18-5tc" secondAttribute="centerY" id="pUY-sf-LM7"/>
                         <constraint firstItem="Mjn-0h-D6t" firstAttribute="leading" secondItem="35f-fZ-AEx" secondAttribute="leading" constant="16" id="rV6-Y0-uFp"/>
                         <constraint firstItem="Mjn-0h-D6t" firstAttribute="top" secondItem="jig-cW-iZD" secondAttribute="bottom" constant="20" id="uku-tJ-QM4"/>
                         <constraint firstItem="bAJ-4Z-kl3" firstAttribute="leading" secondItem="Vg5-DZ-fQY" secondAttribute="trailing" constant="20" id="vnm-2c-Wob"/>
                         <constraint firstItem="XjC-vy-nOi" firstAttribute="centerY" secondItem="bAJ-4Z-kl3" secondAttribute="centerY" id="yuD-QH-GxC"/>
+                        <constraint firstAttribute="trailing" secondItem="nD1-Xy-fOh" secondAttribute="trailing" constant="16" id="z8P-jB-uzu"/>
                     </constraints>
                 </view>
             </subviews>
@@ -147,6 +187,7 @@
     </objects>
     <resources>
         <image name="icon_Down" width="34" height="20"/>
+        <image name="icon_Like" width="42" height="38"/>
         <image name="icon_PlayerNext" width="44" height="22"/>
         <image name="icon_Playerback" width="44" height="22"/>
         <image name="icon_play" width="42" height="42"/>

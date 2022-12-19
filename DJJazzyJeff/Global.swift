@@ -224,6 +224,28 @@ func SetTheFont(fontName :String, size :Double) -> UIFont {
 }
 
 //............................... ALERT MESSAGE ...............................................//
+
+func showToast(sender:UIView, message : String) {
+    
+    let toastLabel = UILabel(frame: CGRect(x: sender.frame.size.width/2 - 190, y: 200, width: 380, height: 35))
+    toastLabel.backgroundColor = UIColor.green.withAlphaComponent(1)
+    toastLabel.textColor = UIColor.white
+    toastLabel.configureLable(textColor: UIColor.primary, fontName: GlobalConstants.APP_FONT_Regular, fontSize: 13, text: "")
+    toastLabel.textAlignment = .center;
+    toastLabel.text = message
+    toastLabel.alpha = 1.0
+    toastLabel.layer.cornerRadius = 10;
+    toastLabel.clipsToBounds  =  true
+    sender.addSubview(toastLabel)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+}
+
 func showAlertMessage(strMessage: String) {
 
     let alert = UIAlertController(title: nil, message: strMessage, preferredStyle: UIAlertController.Style.alert)
@@ -350,7 +372,7 @@ func indicatorHide(){
 //............................ NAVIGATION BAR ............................................//
 
 
-fileprivate let whiteImage = UIImage(setColor: UIColor.secondary!)
+fileprivate let whiteImage = UIImage(setColor: UIColor.primary!)
 func addNavBarImage(strLogo : String,controller: UINavigationController) -> UIImageView{
 
     let navController = controller
@@ -697,6 +719,89 @@ func setButtonNavigationBarFor(controller: UIViewController,
     }
 }
 
+func setNavigationBarFor(controller: UIViewController,
+                         title:String = "",
+                         isTransperent:Bool = false,
+                         hideShadowImage: Bool = false,
+                         leftIcon : String,
+                         rightIcon : String,
+                         leftActionHandler: (() -> Void)? = nil,
+                         rightActionHandler: (() -> Void)? = nil) {
+     
+    guard let navigationController = controller.navigationController else{
+        return
+    }
+    
+    controller.navigationItem.title = title
+    //SET NAVIGATION
+    navigationController.view.semanticContentAttribute = UserDefaults.standard.language == "ar" ? .forceRightToLeft : .forceLeftToRight
+    
+    if checkDeviceiPad(){
+        navigationController.additionalSafeAreaInsets.top = 30
+    }
+    
+    if #available(iOS 15, *) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.secondary_dark
+        appearance.shadowColor = .clear
+
+        // Title font color
+        appearance.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.primary!,
+             NSAttributedString.Key.font: SetTheFont(fontName: GlobalConstants.APP_FONT_Bold, size: 18.0)]
+        
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+    }
+    else{
+        navigationController.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.primary!,
+             NSAttributedString.Key.font: SetTheFont(fontName: GlobalConstants.APP_FONT_Bold, size: 18.0)]
+    }
+    
+    navigationController.navigationBar.barTintColor = UIColor.primary
+    navigationController.navigationBar.isTranslucent = isTransperent
+    navigationController.navigationBar.shadowImage = UIImage() //(hideShadowImage) ? UIImage() : nil
+
+    if isTransperent {
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
+    else{
+        navigationController.navigationBar.setBackgroundImage(whiteImage, for: .default)
+    }
+    navigationController.navigationBar.setBackgroundImage(whiteImage, for: .default)
+
+   
+    if let actionLeft = leftActionHandler {
+        navigationController.navigationItem.setHidesBackButton(true, animated: false)
+        let button: UIButton = UIButton(type:.custom)
+        button.backgroundColor = UIColor.clear
+        button.setImage(UIImage(named: leftIcon), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        if UserDefaults.standard.language == "ar" {
+            button.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+        let btnAction = UIBarButtonItemWithClouser(button: button, actionHandler: actionLeft)
+        controller.navigationItem.leftBarButtonItem = btnAction
+    }
+    
+    
+    if let actionRight = rightActionHandler {
+        navigationController.navigationItem.setHidesBackButton(true, animated: false)
+        let button: UIButton = UIButton(type:.custom)
+        button.backgroundColor = UIColor.clear
+        button.setImage(UIImage(named: rightIcon), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        if UserDefaults.standard.language == "ar" {
+            button.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+        let btnAction = UIBarButtonItemWithClouser(button: button, actionHandler: actionRight)
+        controller.navigationItem.rightBarButtonItem = btnAction
+    }
+}
 
 
 var safeAreaInset: UIEdgeInsets = {
@@ -1002,21 +1107,30 @@ extension UIDevice {
 
 //URL
 enum Url {
-
+    
     //LOGINA AND REGISTRATION
-    static let login = NSURL(string: "\(Application.BaseURL)MemberLogin\(Application.appAPIName)")!
-    static let signup = NSURL(string: "\(Application.BaseURL)NewMember\(Application.appAPIName)")!
-
-    static let forgetPassword = NSURL(string: "\(Application.BaseURL)MemberPassReset\(Application.appAPIName)")!
-
+    static let login = NSURL(string: "\(Application.BaseURL)MemberLogin\(Application.appAPPName)")!
+    static let signup = NSURL(string: "\(Application.BaseURL)NewMember\(Application.appAPPName)")!
+    
+    static let forgetPassword = NSURL(string: "\(Application.BaseURL)MemberPassReset\(Application.appAPPName)")!
+    
     //HOME SCREE
-    static let homeBanner = NSURL(string: "\(Application.BaseURL)ads\(Application.appAPIName)")!
-    static let AllVideo = NSURL(string: "\(Application.BaseURL)Videos\(Application.appAPIName)&category=livestream--&client=hls")!
-    static let AllMusic = NSURL(string: "\(Application.BaseURL)Music\(Application.appAPIName)&sort=date&dir=desc")!
+    static let homeBanner = NSURL(string: "\(Application.BaseURL)ads\(Application.appAPPName)")!
+    static let AllVideo = NSURL(string: "\(Application.BaseURL)Videos\(Application.appAPPName)&category=livestream--&client=hls")!
+    static let AllMusic = NSURL(string: "\(Application.BaseURL)Music\(Application.appAPPName)")!
+    
+    //LIVE STREEMING
+    static let LiveStreeming = NSURL(string: "\(Application.BaseURL)GetUser\(Application.appAPPID)")!
+    
+    //MUSIC SCREEN
+    static let updateFavorites = NSURL(string: "\(Application.BaseURL)UpdateFavorites\(Application.appAPPName)")!
+    static let AllCategory = NSURL(string: "\(Application.BaseURL)Categories\(Application.appAPPName)&section=music")!
 
+    
+    //F
+    static let FavoritesList = NSURL(string: "\(Application.BaseURL)Favorites\(Application.appAPPName)")!
+    
 }
-//https://www.mixapps.io/api/App/Music?app=djjazzyjeff&sort=date&dir=desc
-
 
 extension UIImage {
     
@@ -1094,7 +1208,7 @@ func removeZero(strNumber : String) -> String{
 
 
 //MARK: -- Data Formate Convertion --
-func convertStringToDate(dateString: String, withFormat format: String) -> Date? {
+func convertStringDateToString(dateString: String, withFormat format: String, newFormate : String) -> String? {
     if isValidDate(dateString: dateString, currentFormate: format) {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = format
@@ -1102,11 +1216,12 @@ func convertStringToDate(dateString: String, withFormat format: String) -> Date?
         if let date = inputFormatter.date(from: dateString) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = format
-            return outputFormatter.date(from: outputFormatter.string(from: date))
+            return convertDateToString(date: outputFormatter.date(from: outputFormatter.string(from: date)) ?? Date(), withFormat: format, newFormate: newFormate)
+            
         }
     }
    
-    return Date()
+    return ""
 }
 
 
@@ -1124,65 +1239,65 @@ func convertDateToString(date: Date, withFormat format: String, newFormate : Str
     return strDate
 }
 
-
-func CurrntDateToString( withFormat format: String, newFormate : String) -> String? {
-    let inputFormatter = DateFormatter()
-    inputFormatter.dateFormat = format
-    let strDate = inputFormatter.string(from: Date())
-    return strDate
-}
-
-
-func convertDateToNewFormateString(date: Date, withFormat format: String, newFormate : String) -> String? {
-    let inputFormatter = DateFormatter()
-    inputFormatter.dateFormat = format
-    let strDate = inputFormatter.string(from: date)
-
-    if let date = inputFormatter.date(from: strDate) {
-        let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = newFormate
-        return outputFormatter.string(from: date)
-    }
-    return strDate
-}
-
-
-func convertToGMT(dateToConvert:String) -> Date {
-    let formatter = DateFormatter()
-    formatter.dateFormat = Application.serverDateFormet
-    let convertedDate = formatter.date(from: dateToConvert)
-    formatter.timeZone = TimeZone(identifier: "GMT+6")
-    return convertStringToDate2(dateString: formatter.string(from: convertedDate!)) ?? Date()
-}
-
-func convertStringToDate2(dateString: String) -> Date? {
-    if isValidDate(dateString: dateString, currentFormate: Application.serverDateFormet) {
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = Application.serverDateFormet
-
-        if let date = inputFormatter.date(from: dateString) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = Application.serverDateFormet
-            return outputFormatter.date(from: outputFormatter.string(from: date))
-        }
-    }
-   
-    return Date()
-}
-
-func convertDateFormater(_ OrderDate: String, CurrentDateFormate : String, ChangeDateFormate  :String) -> String{
-    
-    if isValidDate(dateString: OrderDate, currentFormate: CurrentDateFormate) {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = CurrentDateFormate
-        let date = dateFormatter.date(from: OrderDate)
-        dateFormatter.dateFormat = ChangeDateFormate
-        return  dateFormatter.string(from: date!)
-    }
-    return ""
-}
-
+//
+//func CurrntDateToString( withFormat format: String, newFormate : String) -> String? {
+//    let inputFormatter = DateFormatter()
+//    inputFormatter.dateFormat = format
+//    let strDate = inputFormatter.string(from: Date())
+//    return strDate
+//}
+//
+//
+//func convertDateToNewFormateString(date: Date, withFormat format: String, newFormate : String) -> String? {
+//    let inputFormatter = DateFormatter()
+//    inputFormatter.dateFormat = format
+//    let strDate = inputFormatter.string(from: date)
+//
+//    if let date = inputFormatter.date(from: strDate) {
+//        let outputFormatter = DateFormatter()
+//        outputFormatter.dateFormat = newFormate
+//        return outputFormatter.string(from: date)
+//    }
+//    return strDate
+//}
+//
+//
+//func convertToGMT(dateToConvert:String) -> Date {
+//    let formatter = DateFormatter()
+//    formatter.dateFormat = Application.serverDateFormet
+//    let convertedDate = formatter.date(from: dateToConvert)
+//    formatter.timeZone = TimeZone(identifier: "GMT+6")
+//    return convertStringToDate2(dateString: formatter.string(from: convertedDate!)) ?? Date()
+//}
+//
+//func convertStringToDate2(dateString: String) -> Date? {
+//    if isValidDate(dateString: dateString, currentFormate: Application.serverDateFormet) {
+//        let inputFormatter = DateFormatter()
+//        inputFormatter.dateFormat = Application.serverDateFormet
+//
+//        if let date = inputFormatter.date(from: dateString) {
+//            let outputFormatter = DateFormatter()
+//            outputFormatter.dateFormat = Application.serverDateFormet
+//            return outputFormatter.date(from: outputFormatter.string(from: date))
+//        }
+//    }
+//
+//    return Date()
+//}
+//
+//func convertDateFormater(_ OrderDate: String, CurrentDateFormate : String, ChangeDateFormate  :String) -> String{
+//
+//    if isValidDate(dateString: OrderDate, currentFormate: CurrentDateFormate) {
+//        let dateFormatter = DateFormatter()
+//
+//        dateFormatter.dateFormat = CurrentDateFormate
+//        let date = dateFormatter.date(from: OrderDate)
+//        dateFormatter.dateFormat = ChangeDateFormate
+//        return  dateFormatter.string(from: date!)
+//    }
+//    return ""
+//}
+//
 
 
 

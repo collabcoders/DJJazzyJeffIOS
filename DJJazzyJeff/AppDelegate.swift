@@ -17,7 +17,10 @@ public let placeholderMarker = Placeholder()
 //GLOBAL VARIABLE
 public var isMusicViewOpen : Bool = false
 
+
+//MUSIC PLAYER
 var musicView = MusicTabView()
+var isMusicPlay : Bool = false
 
 //PLAYER
 var playerVideo: AVPlayer?
@@ -34,7 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
+        //SET KEYBORD
+        setupKeyboard(true)
+
         return true
     }
 

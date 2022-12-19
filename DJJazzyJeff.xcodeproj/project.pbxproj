@@ -42,13 +42,20 @@
 		C5165C21292DEFAE00EAD1B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5165C20292DEFAE00EAD1B7 /* HomeViewController.swift */; };
 		C5165C85292DF65F00EAD1B7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5165C83292DF65F00EAD1B7 /* Home.storyboard */; };
 		C5165C86292DF65F00EAD1B7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5165C84292DF65F00EAD1B7 /* Login.storyboard */; };
+		C528260B294376830050C2EB /* LiveStreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528260A294376830050C2EB /* LiveStreamingViewController.swift */; };
 		C52E40B7293637C400158D40 /* MusicTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E40B6293637C400158D40 /* MusicTabView.swift */; };
 		C52E40BB2936385300158D40 /* MusicTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E40BA2936385300158D40 /* MusicTabView.xib */; };
 		C53E6D71292CB8620079228E /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E6D70292CB8620079228E /* SignupModel.swift */; };
+		C54C8CDA294D872300EFE5C1 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C8CD9294D872300EFE5C1 /* MusicViewController.swift */; };
+		C54C8CDC294D874000EFE5C1 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C8CDB294D874000EFE5C1 /* MusicModel.swift */; };
+		C54C8CDE294DB5C200EFE5C1 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C8CDD294DB5C200EFE5C1 /* SlideMenuController.swift */; };
 		C54E207A2931B7ED00948C71 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E20782931B7ED00948C71 /* LeftMenuViewController.swift */; };
 		C54E207B2931B7ED00948C71 /* RightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E20792931B7ED00948C71 /* RightMenuViewController.swift */; };
 		C54E207D2931B82000948C71 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54E207C2931B82000948C71 /* TabBar.storyboard */; };
 		C54E207F2931C5AC00948C71 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E207E2931C5AC00948C71 /* TabbarViewController.swift */; };
+		C583FFA2295083C400E9D281 /* MusicTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583FFA1295083C400E9D281 /* MusicTabModel.swift */; };
+		C583FFA7295090CC00E9D281 /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583FFA6295090CC00E9D281 /* FavoritesModel.swift */; };
+		C583FFA9295090D500E9D281 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583FFA8295090D500E9D281 /* FavoritesViewController.swift */; };
 		C5D11ADB2932211E00436BF3 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11ADA2932211E00436BF3 /* HomeModel.swift */; };
 		C5D11B022932261200436BF3 /* VersaPlayerPlaybackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11AE62932261200436BF3 /* VersaPlayerPlaybackError.swift */; };
 		C5D11B032932261200436BF3 /* VersaPlayerRenderingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11AE82932261200436BF3 /* VersaPlayerRenderingView.swift */; };
@@ -69,6 +76,7 @@
 		C5D11B122932261200436BF3 /* VersaPlayerControlsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11AFC2932261200436BF3 /* VersaPlayerControlsCoordinator.swift */; };
 		C5D11B132932261200436BF3 /* VersaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11AFD2932261200436BF3 /* VersaPlayerView.swift */; };
 		C5D11B1629323D7C00436BF3 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D11B1529323D7C00436BF3 /* VideoCell.swift */; };
+		C5D1BFC2294597EC00C5E773 /* LiveStreemingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D1BFC1294597EC00C5E773 /* LiveStreemingModel.swift */; };
 		C5DB9A662935D5AE0024EF9A /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DB9A5F2935D5AE0024EF9A /* UIImageView+SwiftyGif.swift */; };
 		C5DB9A672935D5AE0024EF9A /* NSImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DB9A602935D5AE0024EF9A /* NSImage+SwiftyGif.swift */; };
 		C5DB9A682935D5AE0024EF9A /* ObjcAssociatedWeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DB9A612935D5AE0024EF9A /* ObjcAssociatedWeakObject.swift */; };
@@ -119,13 +127,20 @@
 		C5165C20292DEFAE00EAD1B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C5165C83292DF65F00EAD1B7 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		C5165C84292DF65F00EAD1B7 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		C528260A294376830050C2EB /* LiveStreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamingViewController.swift; sourceTree = "<group>"; };
 		C52E40B6293637C400158D40 /* MusicTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTabView.swift; sourceTree = "<group>"; };
 		C52E40BA2936385300158D40 /* MusicTabView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicTabView.xib; sourceTree = "<group>"; };
 		C53E6D70292CB8620079228E /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
+		C54C8CD9294D872300EFE5C1 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		C54C8CDB294D874000EFE5C1 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		C54C8CDD294DB5C200EFE5C1 /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		C54E20782931B7ED00948C71 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		C54E20792931B7ED00948C71 /* RightMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuViewController.swift; sourceTree = "<group>"; };
 		C54E207C2931B82000948C71 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		C54E207E2931C5AC00948C71 /* TabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		C583FFA1295083C400E9D281 /* MusicTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTabModel.swift; sourceTree = "<group>"; };
+		C583FFA6295090CC00E9D281 /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
+		C583FFA8295090D500E9D281 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		C5D11ADA2932211E00436BF3 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		C5D11AE62932261200436BF3 /* VersaPlayerPlaybackError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersaPlayerPlaybackError.swift; sourceTree = "<group>"; };
 		C5D11AE82932261200436BF3 /* VersaPlayerRenderingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersaPlayerRenderingView.swift; sourceTree = "<group>"; };
@@ -146,6 +161,7 @@
 		C5D11AFC2932261200436BF3 /* VersaPlayerControlsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersaPlayerControlsCoordinator.swift; sourceTree = "<group>"; };
 		C5D11AFD2932261200436BF3 /* VersaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersaPlayerView.swift; sourceTree = "<group>"; };
 		C5D11B1529323D7C00436BF3 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		C5D1BFC1294597EC00C5E773 /* LiveStreemingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreemingModel.swift; sourceTree = "<group>"; };
 		C5DB9A5F2935D5AE0024EF9A /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
 		C5DB9A602935D5AE0024EF9A /* NSImage+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+SwiftyGif.swift"; sourceTree = "<group>"; };
 		C5DB9A612935D5AE0024EF9A /* ObjcAssociatedWeakObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjcAssociatedWeakObject.swift; sourceTree = "<group>"; };
@@ -380,6 +396,9 @@
 			children = (
 				C54E207E2931C5AC00948C71 /* TabbarViewController.swift */,
 				C5165C1F292DEFA600EAD1B7 /* Home */,
+				C54C8CD8294D871300EFE5C1 /* Music */,
+				C583FFA5295090C000E9D281 /* Favorites */,
+				C5282609294376700050C2EB /* Live Streaming */,
 			);
 			path = "HOME MODEL";
 			sourceTree = "<group>";
@@ -404,9 +423,19 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		C5282609294376700050C2EB /* Live Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				C5D1BFC1294597EC00C5E773 /* LiveStreemingModel.swift */,
+				C528260A294376830050C2EB /* LiveStreamingViewController.swift */,
+			);
+			path = "Live Streaming";
+			sourceTree = "<group>";
+		};
 		C52E40B52936375900158D40 /* Music Tab */ = {
 			isa = PBXGroup;
 			children = (
+				C583FFA1295083C400E9D281 /* MusicTabModel.swift */,
 				C52E40B6293637C400158D40 /* MusicTabView.swift */,
 				C52E40BA2936385300158D40 /* MusicTabView.xib */,
 			);
@@ -414,13 +443,32 @@
 			path = "HOME MODEL/Music Tab";
 			sourceTree = "<group>";
 		};
+		C54C8CD8294D871300EFE5C1 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C54C8CDB294D874000EFE5C1 /* MusicModel.swift */,
+				C54C8CD9294D872300EFE5C1 /* MusicViewController.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		C54E20772931B7D800948C71 /* SlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				C54C8CDD294DB5C200EFE5C1 /* SlideMenuController.swift */,
 				C54E20782931B7ED00948C71 /* LeftMenuViewController.swift */,
 				C54E20792931B7ED00948C71 /* RightMenuViewController.swift */,
 			);
 			path = SlideMenu;
+			sourceTree = "<group>";
+		};
+		C583FFA5295090C000E9D281 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				C583FFA6295090CC00E9D281 /* FavoritesModel.swift */,
+				C583FFA8295090D500E9D281 /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		C5D11ADC2932261200436BF3 /* Frameworks */ = {
@@ -693,13 +741,17 @@
 				C52E40B7293637C400158D40 /* MusicTabView.swift in Sources */,
 				C5DB9A6A2935D5AE0024EF9A /* SwiftyGifManager.swift in Sources */,
 				C5D11B092932261200436BF3 /* VersaPlayerCaptionStyling.swift in Sources */,
+				C54C8CDA294D872300EFE5C1 /* MusicViewController.swift in Sources */,
 				C5D11B062932261200436BF3 /* VersaPlayerExtension.swift in Sources */,
+				C54C8CDE294DB5C200EFE5C1 /* SlideMenuController.swift in Sources */,
 				C508939F292C837F00178E64 /* LoginViewController.swift in Sources */,
 				C5089389292C837F00178E64 /* UIView.swift in Sources */,
 				C5089386292C837F00178E64 /* TextFile.swift in Sources */,
 				C508939A292C837F00178E64 /* AlertMessage.swift in Sources */,
 				C508939C292C837F00178E64 /* SplashViewController.swift in Sources */,
 				C5D11B072932261200436BF3 /* VersaPlayerMediaTrack.swift in Sources */,
+				C583FFA7295090CC00E9D281 /* FavoritesModel.swift in Sources */,
+				C5D1BFC2294597EC00C5E773 /* LiveStreemingModel.swift in Sources */,
 				C5D11B102932261200436BF3 /* VersaSeekbarSlider.swift in Sources */,
 				C5089398292C837F00178E64 /* EmptyDataView.swift in Sources */,
 				C50893A0292C837F00178E64 /* Global.swift in Sources */,
@@ -720,24 +772,28 @@
 				C5089335292C80C900178E64 /* AppDelegate.swift in Sources */,
 				C508938B292C837F00178E64 /* UILabel+Extension.swift in Sources */,
 				C5DB9A662935D5AE0024EF9A /* UIImageView+SwiftyGif.swift in Sources */,
+				C528260B294376830050C2EB /* LiveStreamingViewController.swift in Sources */,
 				C508938E292C837F00178E64 /* WebServiceHelper.swift in Sources */,
 				C5D11B0B2932261200436BF3 /* VersaPlayerControlsBehaviour.swift in Sources */,
 				C5D11B0D2932261200436BF3 /* VersaPlayerGestureRecieverViewDelegate.swift in Sources */,
 				C54E207A2931B7ED00948C71 /* LeftMenuViewController.swift in Sources */,
 				C5D11B122932261200436BF3 /* VersaPlayerControlsCoordinator.swift in Sources */,
 				C5D11B052932261200436BF3 /* VersaPlayerPlaybackDelegate.swift in Sources */,
+				C54C8CDC294D874000EFE5C1 /* MusicModel.swift in Sources */,
 				C5D11B0F2932261200436BF3 /* VersaStatefulButton.swift in Sources */,
 				C5D11B082932261200436BF3 /* VersaPlayer.swift in Sources */,
 				C508938A292C837F00178E64 /* UIColor+Extension.swift in Sources */,
 				C5D11B1629323D7C00436BF3 /* VideoCell.swift in Sources */,
 				C5DB9A692935D5AE0024EF9A /* UIImage+SwiftyGif.swift in Sources */,
 				C5089396292C837F00178E64 /* CustomeNavigation.swift in Sources */,
+				C583FFA9295090D500E9D281 /* FavoritesViewController.swift in Sources */,
 				C5D11B132932261200436BF3 /* VersaPlayerView.swift in Sources */,
 				C5D11B032932261200436BF3 /* VersaPlayerRenderingView.swift in Sources */,
 				C5D11B112932261200436BF3 /* VersaPlayerControls.swift in Sources */,
 				C5D11B042932261200436BF3 /* VersaPlayerDecryptionDelegate.swift in Sources */,
 				C5D11ADB2932211E00436BF3 /* HomeModel.swift in Sources */,
 				C5D11B0C2932261200436BF3 /* VersaPlayerGestureRecieverView.swift in Sources */,
+				C583FFA2295083C400E9D281 /* MusicTabModel.swift in Sources */,
 				C5DB9A672935D5AE0024EF9A /* NSImage+SwiftyGif.swift in Sources */,
 				C5D11B022932261200436BF3 /* VersaPlayerPlaybackError.swift in Sources */,
 				C53E6D71292CB8620079228E /* SignupModel.swift in Sources */,
@@ -883,7 +939,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 599267FNH5;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -918,7 +974,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 599267FNH5;
 				GENERATE_INFOPLIST_FILE = YES;

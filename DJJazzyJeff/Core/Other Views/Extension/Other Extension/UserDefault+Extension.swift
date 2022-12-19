@@ -13,14 +13,16 @@ enum NSUDKey {
     static let deviceToken = "deviceToken"
     static let language = "language"
     static let userData = "userData"
-    
+    static let accessToken = "access_token"
+
 }
 
 
 extension Notification.Name {
     static let languageUpdate = Notification.Name("languageUpdate")
     static let plsyMusic = Notification.Name("plsyMusic")
-    
+    static let removeFavorit = Notification.Name("removeFavorit")
+
     //VIDEO
     static let activationBlock = Notification.Name("activationBlock")
     static let deactivationBlock = Notification.Name("deactivationBlock")
@@ -68,6 +70,20 @@ extension UserDefaults{
     }
     
     
+    var accessToken: String?{
+        get {
+            return string(forKey: NSUDKey.accessToken)
+        }
+        set {
+            if newValue == nil {
+                removeObject(forKey: NSUDKey.accessToken)
+            }
+            else{
+                set(newValue, forKey: NSUDKey.accessToken)
+            }
+            synchronize()
+        }
+    }
     
     var language: String{
         get {

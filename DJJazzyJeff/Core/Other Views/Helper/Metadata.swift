@@ -57,7 +57,8 @@ enum Application {
     static let BaseURLDev = "https://www.mixapps.io/api/App/"
     static let BaseURLLive = ""
     static let BaseURL = BaseURLDev
-    static let appAPIName = "?app=djjazzyjeff"
+    static let appAPPName = "?app=djjazzyjeff"
+    static let appAPPID = "?appId=djjazzyjeff"
 
 
     
@@ -71,8 +72,9 @@ enum Application {
     static let termsCondition = ""
 
     //DATE FORMET
-    static let strDateFormet = "dd MMM yyyy"
+    static let strDateFormet = "MMM dd, yyyy"
     static let pickerDateFormet = "yyyy-MM-dd"
+    static let pickerDateFormet2 = "yyyy-MM-dd'T'HH:mm:ss"
     static let yearOf = 10
     static let HHMMSS = "HH:mm:ss"
     static let serverDateFormet = "yyyy-MM-dd HH:mm:ss"

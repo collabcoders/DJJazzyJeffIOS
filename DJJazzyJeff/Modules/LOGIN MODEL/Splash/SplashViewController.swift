@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 
 class SplashViewController: UIViewController {
     var window: UIWindow?
@@ -49,34 +48,10 @@ class SplashViewController: UIViewController {
         self.objIndicator.stopAnimating()
 
         if UserDefaults.standard.user != nil{
-            //MOVE TO HOME SCREEN
-//            let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.HOME_MODEL, bundle: nil)
-//            if let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController{
-//                /* Initiating instance of ui-navigation-controller with view-controller */
-//                let navigationController = UINavigationController()
-//                navigationController.viewControllers = [newViewController]
-//                GlobalConstants.appDelegate?.window?.rootViewController = navigationController
-//                GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
-//            }
 
-            //MOVE TO TABBAR
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.TABBAR, bundle: nil)
-                guard let tabBariewController = storyBoard.instantiateViewController(withIdentifier: "TabbarViewController") as? TabbarViewController,
-                      let leftMenuViewController = storyBoard.instantiateViewController(withIdentifier: "LeftMenuViewController") as? LeftMenuViewController,
-                      let rightMenuController = storyBoard.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuViewController else {
-                          return
-                      }
-                
-        //        let navigationViewController: UINavigationController = UINavigationController(rootViewController: tabBariewController)
-                //Create Side Menu View Controller with main, left and right view controller
-                let sideMenuViewController = SlideMenuController(mainViewController: tabBariewController, leftMenuViewController: leftMenuViewController, rightMenuViewController: rightMenuController)
-                GlobalConstants.appDelegate?.window?.rootViewController = sideMenuViewController
-                GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
-            }
-
+            //MOVE TO HOME SCREN
+            moveToHomeSCree()
             
-
         }
         else{
             //MOVE TO LOGIN SCREEN
@@ -94,3 +69,21 @@ class SplashViewController: UIViewController {
 
 
 
+func moveToHomeSCree(){
+    
+    //MOVE TO TABBAR
+    DispatchQueue.main.asyncAfter(deadline: .now()) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: GlobalConstants.TABBAR, bundle: nil)
+        guard let tabBariewController = storyBoard.instantiateViewController(withIdentifier: "TabbarViewController") as? TabbarViewController,
+              let leftMenuViewController = storyBoard.instantiateViewController(withIdentifier: "LeftMenuViewController") as? LeftMenuViewController,
+              let rightMenuController = storyBoard.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuViewController else {
+                  return
+              }
+        
+        //Create Side Menu View Controller with main, left and right view controller
+        let sideMenuViewController = SlideMenuController(mainViewController: tabBariewController, leftMenuViewController: leftMenuViewController, rightMenuViewController: rightMenuController)
+        GlobalConstants.appDelegate?.window?.rootViewController = sideMenuViewController
+        GlobalConstants.appDelegate?.window?.makeKeyAndVisible()
+    }
+
+}
